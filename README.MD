@@ -64,7 +64,9 @@ Inside your www folder, make sure it should be setup with the hugo directory str
 
 ## Upgrading 
 
-Image re-builds are made every day, to update on your side, you will need to:
+Image re-builds are made every day, therefore you could use watchtower to automaically update the container,
+
+Or, to manually update on your side, you will need to:
 
 ```
 docker stop hugo

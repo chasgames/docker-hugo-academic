@@ -1,29 +1,30 @@
-# Hugo docker
+# Hugo-Academic Docker
 
-This spins up;
-* Up-to-date Alpine OS
-* Up-to-date Hugo 64 bit
-* Up-to-date Academic Theme
+This docker container spins up;
+* Latest [Alpine OS](https://www.alpinelinux.org/about/)
+* Latest [Hugo 64 bit](https://gohugo.io/) (listening on port 80)
+* Latest [Academic Theme](https://github.com/gcushen/hugo-academic)
 
-Your site should be live at on port 80, check the troubleshooting section if you want to bind to a certain IP address.
+and ... it's a nice small image size.
 
 ## Getting Started
 
 
 
-### I don't have a site yet.
+### Don't have a site yet?
 
 ---
 To create a brand-new site;
 
-1. #### Go to a folder where you want your website files, Run the below script, this will automagically create a "site" folder in the directory where you run this command. (and it also mounts it on a re-run)
+1. #### Go into a folder where you want your website files. 
+2. #### Run the below script, this will automagically create a "site" folder in the directory where you run this command. (it also mounts the folder to the docker)
 
 ```
 docker run -d --name hugo -p 80:1313 hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes && docker cp hugo:/app/site $(pwd) && docker stop hugo && docker rm hugo && docker run -d -v $(pwd)/site:/app/site --name hugo -p 80:1313 hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
 ```
 Done!
 
-### I already have an academic site.
+### Already have an academic site?
 
 ---
 Then all you need to do is tell docker where your file structure lives (the folder which contains config.toml content and static)
@@ -39,23 +40,38 @@ docker run -d -v $(pwd):/app/site --name hugo -p 80:1313 hugo server --bind "0.0
 
 
 
+# Troubleshooting
 
-Further torubleshooting
-docker logs hugo
+ ### I want to bind it to a Public IP address, or change the port.
 
-2. #### Copy existing website files over 
+ No problem, just specify it next to the port section.
+ 
+ In the docker run, replace:
+ `-p 80:1313`
+ with:
+`-p 1.3.3.7:80:1313`
 
-if you dont have a site, then you can git clone this directory to get an example site and edit it.
+Which will be live at 1.3.3.7:80
+
+### Don't want to mount web files to your host machine?
+As an alternative to mounting, you could always remove the mounting line in docker run `"-v dir:dir"` and spin the docker up and copy and paste your website files.
 ```
 docker cp www/. hugo:/app/site
 ```
 It's important you keep the "/." after your directory you want to copy
 
 Inside your www folder, make sure it should be setup with the hugo directory structure https://gohugo.io/getting-started/directory-structure/
+
 ## Upgrading 
+
+```
 docker stop hugo
 docker rm hugo
 re-run the docker line for existing website
- 
- ### I want to bind it to a Public IP address
+```
+You could also set up a cron for this task.
 
+
+---
+
+- [ ] Perhaps we can integrate a self-updating task inside the docker itself in the near future.

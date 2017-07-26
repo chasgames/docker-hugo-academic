@@ -64,6 +64,8 @@ Inside your www folder, make sure it should be setup with the hugo directory str
 
 ## Upgrading 
 
+Image re-builds are made every day, to update on your side, you will need to:
+
 ```
 docker stop hugo
 docker rm hugo

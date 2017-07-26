@@ -20,7 +20,7 @@ To create a brand-new site;
 2. #### Run the below script, this will automagically create a "site" folder in the directory where you run this command. (it also mounts the folder to the docker)
 
 ```
-docker run -d --name hugo -p 80:1313 hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes && docker cp hugo:/app/site $(pwd) && docker stop hugo && docker rm hugo && docker run -d -v $(pwd)/site:/app/site --name hugo -p 80:1313 hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
+docker run -d --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes && docker cp hugo:/app/site $(pwd) && docker stop hugo && docker rm hugo && docker run -d -v $(pwd)/site:/app/site --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
 ```
 Done!
 
@@ -34,7 +34,7 @@ Then all you need to do is tell docker where your file structure lives (the fold
 
 2. #### Run this line
 ```
-docker run -d -v $(pwd):/app/site --name hugo -p 80:1313 hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
+docker run -d -v $(pwd):/app/site --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
 ```
 
 

@@ -33,8 +33,8 @@ RUN mkdir -p /app/site && tar xzf *.tar.gz -C /usr/local/bin \
 && rm -fr *tar.gz \
 && chmod +x /usr/local/bin/hugo \
 #Guess we don't need this line, maybe in the future if example site doesn't exist && /app/site/hugo new site /app/site \
-&& git clone https://github.com/gcushen/hugo-academic.git /app/site/themes/academic \
-&& cp -av /app/site/themes/academic/exampleSite/* /app/site \
+&& git clone https://github.com/gcushen/hugo-academic.git /app/themes/academic \
+&& cp -av /app/themes/academic/exampleSite/* /app/site \
 && chown -R hugo:hugo /app
 
 #Copy your site files into container.. ok lets not do this

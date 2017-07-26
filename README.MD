@@ -16,13 +16,13 @@ and ... it's a nice small image size.
 ---
 To create a brand-new site;
 
-1. #### Go into a folder where you want your website files. 
+1. #### ```cd``` to the directory where you want your website files. 
 2. #### Run the below script, this will automagically create a "site" folder in the directory where you run this command. (it also mounts the folder to the docker)
 
 ```
 docker run -d --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes && docker cp hugo:/app/site $(pwd) && docker stop hugo && docker rm hugo && docker run -d -v $(pwd)/site:/app/site --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
 ```
-Done!
+Done! - you can start modifying the website in the "site" folder it created.
 
 ### Already have an academic site?
 
@@ -37,10 +37,19 @@ Then all you need to do is tell docker where your file structure lives (the fold
 docker run -d -v $(pwd):/app/site --name hugo -p 80:1313 chasg/hugo server --bind "0.0.0.0" -p 1313 --themesDir /app/themes
 ```
 
-
-
-
 # Troubleshooting
+
+ ### Something went wrong during "docker run"
+You should get a hint of the problem with
+```
+docker logs hugo
+```
+then you will need to stop/remove and re-run the docker
+```
+docker stop hugo
+docker rm hugo
+re-run the docker line
+```
 
  ### I want to bind it to a Public IP address, or change the port.
 
@@ -53,14 +62,21 @@ docker run -d -v $(pwd):/app/site --name hugo -p 80:1313 chasg/hugo server --bin
 
 Which will be live at 1.3.3.7:80
 
-### Don't want to mount web files to your host machine?
-As an alternative to mounting, you could always remove the mounting line in docker run `"-v dir:dir"` and spin the docker up and copy and paste your website files.
+### Theme modifications don't work
+This Docker fully manages your themes directory and is kept seperately from your mounted site data. Therefore any existing theme directory is not applicable.
+
+All you need to do is manage your config.toml content and static folders.
+
+If you insist on testing some modifications to the theme, then you could do something like:
 ```
-docker cp www/. hugo:/app/site
+docker cp www/themes/. hugo:/app/themes
 ```
 It's important you keep the "/." after your directory you want to copy
 
-Inside your www folder, make sure it should be setup with the hugo directory structure https://gohugo.io/getting-started/directory-structure/
+Though remember your theme modifications will be lost if you re-build the image.
+
+### I want another theme!
+Doh!, Maybe this Docker isn't for you, though it is possible with a few modifications :P
 
 ## Upgrading 
 

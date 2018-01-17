@@ -94,10 +94,9 @@ You could also set up a cron for this task.
 <dl>
 <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/charles"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt=""><span style="margin-left:5px">Buy me a coffee</span></a>
  </dl>
- 
- ![Buy me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/white_img.png)
- 
- [![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)
+
+ [![Buy me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/white_img.png)](https://www.buymeacoffee.com/charles)
+
 ---
 
 - [ ] Perhaps we can integrate a self-updating task inside the docker itself in the near future.

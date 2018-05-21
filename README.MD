@@ -1,4 +1,8 @@
 ![](https://img.shields.io/docker/pulls/chasg/hugo.svg)
+![](https://img.shields.io/docker/pulls/chasg/hugo.svg?longCache=true&style=for-the-badge)
+![](https://img.shields.io/docker/pulls/chasg/hugo.svg?longCache=true&style=flat-square)
+![](https://img.shields.io/docker/pulls/chasg/hugo.svg?longCache=true&style=flat)
+![](https://img.shields.io/docker/pulls/chasg/hugo.svg?longCache=true&style=plastic)
 
 # Hugo-Academic Docker
 

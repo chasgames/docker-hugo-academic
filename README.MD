@@ -1,4 +1,5 @@
-<img src="https://img.shields.io/docker/pulls/chasg/hugo.svg"/>
+![](https://img.shields.io/docker/pulls/chasg/hugo.svg)
+
 # Hugo-Academic Docker
 
 This docker container spins up;
